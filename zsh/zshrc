@@ -131,3 +131,9 @@ bindkey -s "^[OR" "*"
 bindkey -s "^[OS" "-"
 bindkey -s "^[Ol" "+"
 #END Keypad
+
+#alias
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ls='ls --color=tty -F'
