@@ -20,5 +20,15 @@
   new = green
 [alias]
   logs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  l = log --graph --date=short
   r = remote -v
   s = status
+  b = branch -v
+[core]
+	autocrlf = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
