@@ -130,6 +130,9 @@ bindkey -s "^[OQ" "/"
 bindkey -s "^[OR" "*"
 bindkey -s "^[OS" "-"
 bindkey -s "^[Ol" "+"
+# Home End
+bindkey "\033[1~" beginning-of-line
+bindkey "\033[4~" end-of-line
 #END Keypad
 
 #alias
