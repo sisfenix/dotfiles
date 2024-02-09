@@ -78,6 +78,7 @@ ZSH_THEME="xiong-chiamiov-plus"
 plugins=(
   git
   aws
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
