@@ -1,0 +1,5 @@
+# This is Andy's Troubleshooting Quick Name Resolution File for Wireshark
+# Lines with # are comments, and are ignored
+#
+#192.168.1.1 SpectrumGW
+#192.168.1.215 My_PC
