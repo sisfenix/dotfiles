@@ -16,6 +16,7 @@ Aqui está uma visão geral dos programas configurados e seus respectivos diret�
 | **GDB** | [`gdb/`](./gdb) | `gdbinit` | Depurador otimizado para engenharia reversa com a sintaxe Intel e PEDA. |
 | **Wireshark** | [`wireshark/`](./wireshark) | `profiles/` | Perfis específicos de análise de tráfego de rede (WLAN, DHCP, DNS, etc). |
 | **FreeCAD** | [`freecad/`](./freecad) | `system.cfg`, `user.cfg` | Preferências de interface e bancadas de trabalho (Workbenches). |
+| **Agent Skills** | [`agent-skills/`](./agent-skills) | `python-pyenv-poetry/` | Diretrizes e instruções personalizadas para assistentes de IA (e.g., Pyenv + Poetry). |
 
 ---
 
@@ -67,6 +68,10 @@ Perfis personalizados para agilizar a filtragem e análise de protocolos em paco
 Parâmetros de ambiente pré-definidos para agilizar a modelagem 3D.
 *   Armazena configurações das bancadas de trabalho padrão como **Assembly**, **Spreadsheet**, **CAM (Path)** e a tela inicial (**Start**).
 
+### 🤖 Agent Skills (`agent-skills/`)
+Instruções e diretrizes de desenvolvimento otimizadas para agentes e assistentes de IA que operam neste repositório.
+*   **Python Pyenv Poetry (`python-pyenv-poetry/`):** Diretrizes estruturadas para o gerenciamento correto de ambientes virtuais Python de forma isolada, forçando o uso de `pyenv` para controle de versão do interpretador e `poetry` para dependências (evitando poluição do Python global/sistema).
+
 ---
 
 ## 🚀 Como Aplicar as Configurações
@@ -95,6 +100,10 @@ ln -sf ~/dotfiles/gdb/gdbinit ~/.gdbinit
 # Wireshark (copiar perfis para a pasta de configuração local)
 mkdir -p ~/.config/wireshark/profiles
 cp -r ~/dotfiles/wireshark/profiles/* ~/.config/wireshark/profiles/
+
+# Agent Skills (configura o skill de IA no diretório global do Gemini)
+mkdir -p ~/.gemini/config/skills
+ln -sf ~/dotfiles/agent-skills/python-pyenv-poetry ~/.gemini/config/skills/python-pyenv-poetry
 ```
 
 ### Windows (PowerShell - Administrador)
@@ -111,4 +120,8 @@ New-Item -ItemType SymbolicLink -Path "$HOME\.vimrc" -Value "$PWD\vim\vimrc" -Fo
 
 # FreeCAD (configurações do usuário no AppData)
 Copy-Item -Path "$PWD\freecad\*" -Destination "$env:APPDATA\FreeCAD\" -Recurse -Force
+
+# Agent Skills (configura o skill de IA no diretório global do Gemini)
+if (!(Test-Path "$HOME\.gemini\config\skills")) { New-Item -ItemType Directory -Path "$HOME\.gemini\config\skills" -Force }
+New-Item -ItemType SymbolicLink -Path "$HOME\.gemini\config\skills\python-pyenv-poetry" -Value "$PWD\agent-skills\python-pyenv-poetry" -Force
 ```
